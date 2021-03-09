@@ -1,0 +1,140 @@
+$_orange: #ff690f;
+$_red: #e8381b;
+$_white: #fff;
+$_gray: #fafafa;
+$_midnight: #384c59;
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Helvetica;
+  background-color: $_gray;
+}
+
+.autocomplete {
+  padding: 30px 35px 0 35px;
+  height: 100px;
+  background: linear-gradient(to right, $_orange, $_red);
+
+  &__form {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+  }
+
+  &__search-field {
+    display: flex;
+    align-items: center;
+    border-radius: 2px;
+    width: 100%;
+    height: 50px;
+    background-color: rgba($color: $_white, $alpha: 0.3);
+    transition: 300ms;
+
+    &:hover {
+      background-color: rgba($color: $_white, $alpha: 0.4);
+    }
+
+    &:focus-within {
+      background-color: $_white;
+      border-bottom: 1px solid rgba($color: $_midnight, $alpha: 0.4);
+      transition: 300ms;
+      height: 55px;
+      svg {
+        fill: $_midnight;
+      }
+      .autocomplete__input {
+        color: $_midnight;
+      }
+    }
+  }
+
+  &__options {
+    list-style: none;
+    padding: 0;
+    margin: 0 55px 0 0;
+    box-shadow: 0 2px 3px 0.7px rgba(0, 0, 0, 0.2);
+    border-radius: 0 0 5px 5px;
+  }
+
+  &__option {
+    background-color: $_white;
+    padding: 20px 50px;
+    color: $_midnight;
+
+    &--searching {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      font-weight: 600;
+    }
+
+    &-title {
+      font-weight: 600;
+    }
+
+    &-info {
+      font-size: small;
+    }
+
+    &:last-child {
+      border-radius: 0 0 5px 5px;
+    }
+
+    &:hover {
+      transition-property: background-color, color;
+      transition-duration: 300ms;
+      background-color: $_orange;
+      padding: 20px 50px;
+      cursor: pointer;
+      color: $_white;
+    }
+  }
+
+  &__button {
+    border: none;
+    border-radius: 2px;
+    flex-shrink: 0;
+    height: 50px;
+    width: 50px;
+    color: $_orange;
+    display: flex;
+    align-items: center;
+  }
+
+  &__movie-icon {
+    fill: $_white;
+    height: 30px;
+    width: 30px;
+    margin-left: 10px;
+  }
+
+  &__input {
+    background-color: transparent;
+    width: 100%;
+    border: none;
+    outline: none;
+    margin-left: 10px;
+    color: $_white;
+    font-size: 15px;
+    font-weight: 600;
+    font-family: inherit;
+
+    &::placeholder {
+      color: inherit;
+      font-size: inherit;
+    }
+  }
+
+  &__spinner {
+    width: 30px;
+    height: 30px;
+    display: inline;
+  }
+}
